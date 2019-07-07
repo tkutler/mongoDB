@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var MyObjConstructor = function(name) {
+  var myPrivateVar = "Hello"; // just to show that it is difficult to see this private var
+  this.name = name; // but you can see the name!
+  this.method = function() {
+    console.log( "I am a method");
+  };
+}
+var obj1 = new MyObjConstructor('object1');
+var obj2 = new MyObjConstructor('object2');
+console.log(obj1);
+        </script>
+</body>
+</html>

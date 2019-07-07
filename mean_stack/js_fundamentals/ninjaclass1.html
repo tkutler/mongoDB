@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja class 1</title>
+</head>
+<body>
+    <script>
+        function ninja(name) {
+            this.name = name; 
+            this.health = 100; 
+            var speed = 3;
+            var strength = 3;
+            this.showspeed = function(){
+                return speed;
+            }
+         
+            this.showstrength= function(){
+                return strength;
+            }
+        } 
+
+        ninja.prototype.showName = function() {
+            console.log("my name is" + this.name)
+
+        } 
+        ninja.prototype.showstats = function(){
+           console.log("name:", this.name ,
+           "health:" , this.health, "strength:" , this.showstrength(), "speed:" , this.showspeed())
+        }
+        ninja.prototype.drinksake = function(){
+          this.health += 10 ;
+          return this;  
+            
+        } 
+        ninja.prototype.punch = function(ninja)
+        {
+            ninja.health -= 10;
+            console.log(ninja.name, "got punched by", this.name);
+            return ninja.health;
+        } 
+        ninja.prototype.kick = function(ninja) 
+        {
+          ninja.health -= 15 * this.showstrength();
+          console.log(ninja.name, "got kicked by", this.name, "with strength of", this.showstrength())  
+        }
+        
+
+        
+        </script>
+</body>
+</html>
