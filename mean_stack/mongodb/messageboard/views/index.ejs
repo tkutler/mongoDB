@@ -19,7 +19,8 @@
         <p><%= message.message %></p>
         <p><%= message._id %></p>
             <% for (var comment of message.comments) { %>
-                <p><%= comment.content %></p>   
+                <p>comment=====<%= comment.content %></p>  
+                <% } %>     
         <form action="comment" method="post">
             <p>name: <input type="text", name= "cname"></p>
             <p>comment: <input type="text", name= "comment"></p>
@@ -27,7 +28,7 @@
             <input type="submit", value="Post comment">
 
         </form>
-        <% } %>
+        
         <% } %>
     </div>
 
