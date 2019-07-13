@@ -29,57 +29,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // static content
 app.use(express.static(path.join(__dirname, "./static")));
 // setting up ejs and our views folder
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 // root route to render the index.ejs view
-app.get('/', function(req, res) {
-  User.find({}, function(err, users){
-    if (err) {
-      console.log("error");
-    }
-    res.render("index", {users: users});
-
-  })
-  
-});
-app.post('/quote', function(req, res) {
-  console.log("POST DATA", req.body);
- 
-  var user = new User({name: req.body.name, quote: req.body.quote, created_at:new Date()});
- 
-  user.save(function(err) {
-  
-    if(err) {
-      console.log('something went wrong');
-    } 
-    else {
-      console.log('successfully added a user!');
-      console.log(user);
-      res.redirect("/");
-    }
-  });
-})
-app.get('/quote', function(req, res) {
-  User.find({}, function(err, users){
-    if (err) {
-      console.log("error");
-    }
-    res.render("quote", {users: users});
-
-  })
-  
-});
-app.post('/quotepage', function(req, res) {
-  console.log('in route')
-  User.find({}, function(err, users){
-    if (err) {
-      console.log("error");
-    }
-    res.render("quote", {users: users});
-
-  })
-  
-});
+require('./config/routes.js')(app);
 
 app.listen(8000, function(){
  console.log("listening on port 8000");
