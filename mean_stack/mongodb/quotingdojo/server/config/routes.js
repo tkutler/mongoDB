@@ -1,52 +1,24 @@
 const mongoose = require('mongoose');
-User = mongoose.model('User');
+const User = mongoose.model('User');
+var quotes = require('../controllers/quotes.js');
+
 module.exports = function(app){
-app.get('/', function(req, res) {
-    User.find({}, function(err, users){
-      if (err) {
-        console.log("error");
-      }
-      res.render("index", {users: users});
-  
-    })
+  app.get('/', function(req, res) {
+    quotes.index(req,res);
+
+  })
     
-  });
   app.post('/quote', function(req, res) {
-    console.log("POST DATA", req.body);
-   
-    var user = new User({name: req.body.name, quote: req.body.quote, created_at:new Date()});
-   
-    user.save(function(err) {
-    
-      if(err) {
-        console.log('something went wrong');
-      } 
-      else {
-        console.log('successfully added a user!');
-        console.log(user);
-        res.redirect("/");
-      }
-    });
+    quotes.create(req,res);
+
   })
   app.get('/quote', function(req, res) {
-    User.find({}, function(err, users){
-      if (err) {
-        console.log("error");
-      }
-      res.render("quote", {users: users});
+    quotes.show(req, res);
   
     })
-    
-  });
+  
   app.post('/quotepage', function(req, res) {
-    console.log('in route')
-    User.find({}, function(err, users){
-      if (err) {
-        console.log("error");
-      }
-      res.render("quote", {users: users});
-  
-    })
-    
-  });
-};
+    quotes.make(req, res);
+
+  })
+}
