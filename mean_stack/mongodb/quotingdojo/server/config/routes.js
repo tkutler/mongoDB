@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+// const User = mongoose.model('User');
 var quotes = require('../controllers/quotes.js');
 
 module.exports = function(app){
