@@ -32,7 +32,7 @@ module.exports = {
             }
         })
     },
-    make: function (req, res){
+    post: function (req, res){
         User.find({}, function(err,users){
             if (err) {
                 console.log(err);

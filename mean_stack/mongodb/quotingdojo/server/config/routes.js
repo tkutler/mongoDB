@@ -18,7 +18,7 @@ module.exports = function(app){
     })
   
   app.post('/quotepage', function(req, res) {
-    quotes.make(req, res);
+    quotes.post(req, res);
 
   })
 }

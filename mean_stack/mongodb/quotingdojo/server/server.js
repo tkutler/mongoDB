@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // static content
 app.use(express.static(path.join(__dirname, "./static")));
 // setting up ejs and our views folder
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../client/views'));
 app.set('view engine', 'ejs');
 // root route to render the index.ejs view
 require('./models/quote.js');
